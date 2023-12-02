@@ -2,8 +2,6 @@ package com.nidaonder.library.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,4 +32,8 @@ public class BookBorrowing {
     @Temporal(TemporalType.DATE)
     @Column(name = "return_date")
     private LocalDate returnDate;
+
+    @ManyToOne()
+    @JoinColumn(name = "borrowing_book_id", referencedColumnName = "book_id")
+    private Book book;
 }

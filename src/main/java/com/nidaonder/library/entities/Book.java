@@ -7,6 +7,8 @@ import lombok.Data;
 
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "books")
@@ -37,5 +39,9 @@ public class Book {
     @ManyToOne()
     @JoinColumn(name = "book_publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
+
+    @OneToMany(mappedBy = "book")
+    private List<BookBorrowing> borrowingList;
+
 
 }
