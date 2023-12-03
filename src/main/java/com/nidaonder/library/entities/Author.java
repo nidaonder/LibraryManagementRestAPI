@@ -1,5 +1,6 @@
 package com.nidaonder.library.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Past;
@@ -35,5 +36,6 @@ public class Author {
     private String country;
 
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Book> bookList;
 }

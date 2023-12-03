@@ -2,6 +2,7 @@ package com.nidaonder.library.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,27 +10,25 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
+@Table(name = "categories")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "publishers")
-public class Publisher {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "publisher_id", columnDefinition = "serial")
-    public int id;
+    @Column(name = "category_id")
+    private int id;
 
-    @Column(name = "publisher_name")
-    public String name;
+    @NotEmpty
+    @Column(name = "category_name")
+    private String name;
 
-    @Column(name = "publisher_establishment_year")
-    public int establishmentYear;
+    @Column(name = "category_description")
+    private String description;
 
-    @Column(name = "publisher_address")
-    public String address;
-
-    @OneToMany(mappedBy = "publisher")
+    @ManyToMany(mappedBy = "categoryList")
     @JsonIgnore
     private List<Book> bookList;
 }

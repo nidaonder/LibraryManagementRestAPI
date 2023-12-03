@@ -1,5 +1,6 @@
 package com.nidaonder.library.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -41,7 +42,16 @@ public class Book {
     private Publisher publisher;
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnore
     private List<BookBorrowing> borrowingList;
 
+    @ManyToMany()
+    @JoinTable(
+            name = "book2categories",
+            joinColumns = {@JoinColumn(name = "book2categories_book_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book2categories_category_id")}
+    )
+    @JsonIgnore
+    private List<Category> categoryList;
 
 }
