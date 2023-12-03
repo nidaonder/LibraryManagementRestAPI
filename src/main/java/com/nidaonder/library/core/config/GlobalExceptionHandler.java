@@ -1,6 +1,7 @@
 package com.nidaonder.library.core.config;
 
 import com.nidaonder.library.core.exception.NotFoundException;
+import com.nidaonder.library.core.exception.StockErrorException;
 import com.nidaonder.library.core.result.Result;
 import com.nidaonder.library.core.result.ResultData;
 import com.nidaonder.library.core.utilities.ResultHelper;
@@ -20,6 +21,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Result> handleNotFoundException(NotFoundException e){
         return new ResponseEntity<>(ResultHelper.notFoundError(e.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(StockErrorException.class)
+    public ResponseEntity<Result> handleStockErrorException(StockErrorException e){
+        return new ResponseEntity<>(ResultHelper.stockError(e.getMessage()), HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

@@ -2,6 +2,7 @@ package com.nidaonder.library.business.concretes;
 
 import com.nidaonder.library.business.abstracts.IBorrowingService;
 import com.nidaonder.library.core.exception.NotFoundException;
+import com.nidaonder.library.core.exception.StockErrorException;
 import com.nidaonder.library.core.utilities.Msg;
 import com.nidaonder.library.dao.BorrowingRepo;
 import com.nidaonder.library.entities.BookBorrowing;
@@ -21,7 +22,13 @@ public class BorrowingManager implements IBorrowingService {
 
     @Override
     public BookBorrowing save(BookBorrowing bookBorrowing) {
-        return this.borrowingRepo.save(bookBorrowing);
+        int stock = bookBorrowing.getBook().getStock();
+        if (stock > 0){
+            bookBorrowing.getBook().setStock(stock - 1);
+            return this.borrowingRepo.save(bookBorrowing);
+        } else {
+            throw new StockErrorException(Msg.INSUFFICIENT_STOCK);
+        }
     }
 
     @Override

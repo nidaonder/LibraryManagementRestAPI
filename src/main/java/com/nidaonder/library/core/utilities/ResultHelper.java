@@ -26,6 +26,10 @@ public class ResultHelper {
         return new Result(false, msg, "404");
     }
 
+    public static Result stockError(String msg){
+        return new Result(false, msg, "422");
+    }
+
     public static <T> ResultData <CursorResponse<T>> cursor (Page<T> pageData){
         CursorResponse<T> cursor = new CursorResponse<>();
         cursor.setItems(pageData.getContent());

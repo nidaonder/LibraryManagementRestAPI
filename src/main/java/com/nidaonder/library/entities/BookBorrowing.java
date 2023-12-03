@@ -1,6 +1,7 @@
 package com.nidaonder.library.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,9 +25,12 @@ public class BookBorrowing {
     @Column(name = "borrower_name")
     private String borrowerName;
 
+    @Email
+    @NotEmpty
+    private String borrowerEmail;
+
     @Temporal(TemporalType.DATE)
     @Column(name = "borrowing_date")
-    @NotEmpty
     private LocalDate borrowingDate;
 
     @Temporal(TemporalType.DATE)
