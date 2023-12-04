@@ -2,11 +2,20 @@
 It is a Library Management System Rest API that can perform CRUD operations.
 
 ## Technologies
+
 * Java
 * Spring Boot
 * PostgreSQL
 
 You can view the application by navigating to http://localhost:8080 in your browser.
+
+## Entities
+
+* Author
+* Book
+* BookBorrowing
+* Category
+* Publisher
 
 ## Endpoints
 
@@ -16,6 +25,4 @@ You can view the application by navigating to http://localhost:8080 in your brow
 | "/v1/authors"      | GET            |  All authors are listed.                         |
 | "/v1/authors/{id}  | GET            |  Authors belonging to a specific id are listed.  |
 | "/v1/authors"      | PUT            |  The author of a specific id is updated.         |
-
-
-
+| "/v1/authors"      | DELETE         |  The author of a specific id is deleted.         |
