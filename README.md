@@ -11,4 +11,5 @@ You can view the application by navigating to http://localhost:8080 in your brow
 ## Endpoints
 
 | Endpoint      | HTTP Code      | Description                                |
-| -------------- | ------------- | :----------------------------------------: |
+| ------------- | -------------- | :----------------------------------------: |
+| "/v1/authors" | POST           |  Add new Author                            |
