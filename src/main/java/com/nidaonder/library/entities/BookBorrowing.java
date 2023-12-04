@@ -18,7 +18,7 @@ public class BookBorrowing {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_borrowing_id", columnDefinition = "serial")
+    @Column(name = "id", columnDefinition = "serial")
     private int id;
 
     @NotEmpty
@@ -38,6 +38,6 @@ public class BookBorrowing {
     private LocalDate returnDate;
 
     @ManyToOne()
-    @JoinColumn(name = "borrowing_book_id", referencedColumnName = "book_id")
+    @JoinColumn(name = "borrowing_book", referencedColumnName = "book_id")
     private Book book;
 }

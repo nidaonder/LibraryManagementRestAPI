@@ -16,5 +16,5 @@ public class BorrowingResponse {
     private String borrowerEmail;
     private LocalDate borrowingDate;
     private LocalDate returnDate;
-    private int borrowingBookId;
+    private int bookId;
 }

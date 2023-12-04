@@ -7,7 +7,9 @@ import com.nidaonder.library.core.result.Result;
 import com.nidaonder.library.core.result.ResultData;
 import com.nidaonder.library.core.utilities.ResultHelper;
 import com.nidaonder.library.dto.request.BookSaveRequest;
+import com.nidaonder.library.dto.request.BookUpdateRequest;
 import com.nidaonder.library.dto.request.BorrowingSaveRequest;
+import com.nidaonder.library.dto.request.BorrowingUpdateRequest;
 import com.nidaonder.library.dto.response.AuthorResponse;
 import com.nidaonder.library.dto.response.BookResponse;
 import com.nidaonder.library.dto.response.BorrowingResponse;
@@ -44,7 +46,7 @@ public class BorrowingController {
     public ResultData<BorrowingResponse> save(@Valid @RequestBody BorrowingSaveRequest borrowingSaveRequest){
         BookBorrowing saveBorrowing = this.modelMapper.forRequest().map(borrowingSaveRequest, BookBorrowing.class);
 
-        Book book = this.bookService.get(borrowingSaveRequest.getBorrowingBookId());
+        Book book = this.bookService.get(borrowingSaveRequest.getBorrowingBook());
         saveBorrowing.setBook(book);
 
         this.borrowingService.save(saveBorrowing);
@@ -87,4 +89,16 @@ public class BorrowingController {
         return ResultHelper.ok();
     }
 
+    @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public ResultData<BorrowingResponse> update(@Valid @RequestBody BorrowingUpdateRequest borrowingUpdateRequest){
+        BookBorrowing updateBorrowing = this.modelMapper.forRequest().map(borrowingUpdateRequest, BookBorrowing.class);
+
+        Book book = this.bookService.get(borrowingUpdateRequest.getBorrowingBook());
+        updateBorrowing.setBook(book);
+
+        this.borrowingService.update(updateBorrowing);
+        BorrowingResponse borrowingResponse = this.modelMapper.forResponse().map(updateBorrowing, BorrowingResponse.class);
+        return ResultHelper.success(borrowingResponse);
+    }
 }
