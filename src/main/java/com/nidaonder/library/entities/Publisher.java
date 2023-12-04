@@ -29,7 +29,7 @@ public class Publisher {
     @Column(name = "publisher_address")
     public String address;
 
-    @OneToMany(mappedBy = "publisher")
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Book> bookList;
 }

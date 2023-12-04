@@ -28,7 +28,7 @@ public class Category {
     @Column(name = "category_description")
     private String description;
 
-    @ManyToMany(mappedBy = "categoryList")
+    @ManyToMany(mappedBy = "categoryList", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Book> bookList;
 }
