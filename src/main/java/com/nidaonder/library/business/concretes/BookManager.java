@@ -4,16 +4,12 @@ import com.nidaonder.library.business.abstracts.IBookService;
 import com.nidaonder.library.core.exception.NotFoundException;
 import com.nidaonder.library.core.utilities.Msg;
 import com.nidaonder.library.dao.BookRepo;
-import com.nidaonder.library.dao.CategoryRepo;
 import com.nidaonder.library.entities.Book;
-import com.nidaonder.library.entities.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class BookManager implements IBookService {

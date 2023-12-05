@@ -1,6 +1,5 @@
 package com.nidaonder.library.business.abstracts;
 
-import com.nidaonder.library.entities.Author;
 import com.nidaonder.library.entities.Category;
 import org.springframework.data.domain.Page;
 
